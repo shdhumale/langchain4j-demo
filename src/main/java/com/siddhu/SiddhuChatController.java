@@ -36,8 +36,8 @@ public class SiddhuChatController {
 
 
     public AstraDbEmbeddingStore astraDbEmbeddingStore() {
-        String astraToken = "AstraCS:MZXzIWdpDEGqAznROzfvvUWH:bcfe2596f4b26b7b1dbd40b94095e58c855eaa6087fef2969ed947d5d33a7bbb";
-        String databaseId = "a73bd83b-05db-4e1d-945a-b4768bd1e59c";
+        String astraToken = "<your-astradb-token>";
+        String databaseId = "<your-database-id>";
         LOGGER.debug("Returning AstraDbEmbeddingStore");
         return new AstraDbEmbeddingStore(AstraDbEmbeddingConfiguration
                 .builder()
@@ -63,7 +63,7 @@ public class SiddhuChatController {
   
     public ConversationalRetrievalChain conversationalRetrievalChain() {
         return ConversationalRetrievalChain.builder()
-                .chatLanguageModel(OpenAiChatModel.withApiKey("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"))
+                .chatLanguageModel(OpenAiChatModel.withApiKey("your-open-api-key"))
                 .retriever(EmbeddingStoreRetriever.from(astraDbEmbeddingStore(), embeddingModel()))
                 .build();
     }
